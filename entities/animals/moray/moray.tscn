@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://8a8ed5ao5dvj"]
+
+[ext_resource type="Script" path="res://entities/animal.gd" id="1_rs32y"]
+[ext_resource type="Texture2D" uid="uid://bodqgr1axc1d2" path="res://assets/animals/morayeel.png" id="2_1m7t8"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="3_05m8b"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="4_a3o2d"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="5_gig3n"]
+[ext_resource type="Texture2D" uid="uid://bxdp7ljlslyw7" path="res://assets/animal_effects/hook.png" id="6_rs2lm"]
+[ext_resource type="Script" path="res://entities/animals/moray/hook.gd" id="7_d53h8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0fwa"]
+size = Vector2(90, 229.342)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjfv1"]
+size = Vector2(90, 17.9679)
+
+[node name="Moray" type="RigidBody2D"]
+script = ExtResource("1_rs32y")
+animal_name = &"Moray Eel"
+base_movement_speed = 110.0
+boosts = 3
+charge_max_seconds = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.9)
+texture = ExtResource("2_1m7t8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.82895)
+scale = Vector2(0.85, 0.9)
+shape = SubResource("RectangleShape2D_p0fwa")
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("3_05m8b")
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("4_a3o2d")
+base_damage = 150.0
+face_shapes = [NodePath("../CollisionShape2D2")]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_gig3n")
+max_health = 750.0
+
+[node name="Hook" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5, -190)
+scale = Vector2(0.85, 0.9)
+texture = ExtResource("6_rs2lm")
+region_enabled = true
+region_rect = Rect2(0, 0, 58.6903, 100)
+script = ExtResource("7_d53h8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -104.086)
+scale = Vector2(0.85, 0.9)
+shape = SubResource("RectangleShape2D_pjfv1")

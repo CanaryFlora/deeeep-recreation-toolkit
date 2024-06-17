@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://pxvjcserw2e4"]
+
+[ext_resource type="Script" path="res://map/food_pellet.gd" id="1_1w3yt"]
+[ext_resource type="Texture2D" uid="uid://8khj4g6hg6rb" path="res://assets/map/food/phase_1_food.png" id="2_rux3r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3r0dp"]
+radius = 25.02
+
+[node name="NutrientPellet" type="RigidBody2D"]
+modulate = Color(1, 1, 1, 0.705882)
+collision_layer = 16
+collision_mask = 34
+mass = 0.01
+linear_damp = 3.0
+script = ExtResource("1_1w3yt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_rux3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("CircleShape2D_3r0dp")

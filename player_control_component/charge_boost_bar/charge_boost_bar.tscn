@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://se4822bxfcou"]
+
+[ext_resource type="Theme" uid="uid://bsqjw8o16kxh2" path="res://components/player_control_component/charge_boost_bar/charge_boost_bar_theme.tres" id="1_l5hye"]
+
+[node name="ChargeBoostBG" type="ColorRect"]
+offset_right = 25.0
+offset_bottom = 110.0
+color = Color(0.14902, 0.14902, 0.14902, 0.498039)
+
+[node name="ChargeBoostBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 20.0
+offset_bottom = 105.0
+theme = ExtResource("1_l5hye")
+value = 100.0
+fill_mode = 3
+show_percentage = false

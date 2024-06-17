@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://rvfa27rh1ki4"]
+
+[ext_resource type="PackedScene" uid="uid://pfq4x4d7e6o7" path="res://components/player_control_component/boost_bar/boost_bar_edge_left.tscn" id="1_vru45"]
+[ext_resource type="PackedScene" uid="uid://cv30q3c2562a0" path="res://components/player_control_component/boost_bar/boost_bar_edge_right.tscn" id="2_0ab7y"]
+
+[node name="BoostBarBox" type="HBoxContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -20.0
+offset_right = 112.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BoostBarEdgeLeft" parent="." instance=ExtResource("1_vru45")]
+layout_mode = 2
+
+[node name="BoostBarEdgeRight" parent="." instance=ExtResource("2_0ab7y")]
+layout_mode = 2

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cbne2ikoul23d"]
+
+[ext_resource type="FontFile" uid="uid://bxbh0i5vo504h" path="res://assets/font/Quicksand-Medium.ttf" id="1_xdb0a"]
+
+[resource]
+Label/colors/font_color = Color(0.937255, 0.156863, 0.164706, 1)
+Label/fonts/font = ExtResource("1_xdb0a")

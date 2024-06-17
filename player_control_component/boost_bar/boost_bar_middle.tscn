@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ex6tpn8h3fx4"]
+
+[ext_resource type="Theme" uid="uid://cij1sf25n8als" path="res://components/player_control_component/boost_bar/boost_bar_middle.tres" id="1_3hlwm"]
+
+[node name="BoostBarMiddle" type="ProgressBar"]
+custom_minimum_size = Vector2(220, 20)
+offset_right = 110.0
+offset_bottom = 20.0
+theme = ExtResource("1_3hlwm")
+max_value = 7.5
+show_percentage = false

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://d0jlefv5epu36"]
+
+[ext_resource type="Script" path="res://components/effect_component/effect.gd" id="1_xvgcd"]
+
+[resource]
+script = ExtResource("1_xvgcd")
+name = &"Bleeding"
+stacking_mode = "Override"
+overflow_mode = "Discard"

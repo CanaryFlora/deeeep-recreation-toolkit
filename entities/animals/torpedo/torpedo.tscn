@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyebphfehf35s"]
+
+[ext_resource type="Script" path="res://entities/animal.gd" id="1_jh4an"]
+[ext_resource type="Texture2D" uid="uid://c22cv5eu7kjsb" path="res://assets/animals/atlantictorpedo.png" id="2_iroso"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="3_c2hnb"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="4_60nir"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="5_5wvmy"]
+[ext_resource type="SpriteFrames" uid="uid://1gr3swf0w2wx" path="res://entities/animals/torpedo/torpedo_shock_anim.tres" id="6_tqw2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lewxv"]
+size = Vector2(173.5, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2njt2"]
+size = Vector2(170, 26.6667)
+
+[node name="Atlantic Torpedo" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_jh4an")
+animal_name = &"Atlantic Torpedo"
+base_movement_speed = 100.0
+boosts = 3
+charge_max_seconds = 1.0
+two_step_charge_boost = true
+yellow_boost_start = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_iroso")
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("3_c2hnb")
+base_damage = 140.0
+face_shapes = [NodePath("../CollisionShape2D2")]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_60nir")
+max_health = 800.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.33605e-05, -5.25)
+rotation = 1.5708
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_lewxv")
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("5_5wvmy")
+
+[node name="ShockAnimation" type="CanvasGroup" parent="."]
+visible = false
+scale = Vector2(0.9, 0.9)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(162, -126)
+rotation = 0.592738
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(204, -35)
+rotation = 1.38551
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(196, 59)
+rotation = 2.04774
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(119, 139)
+rotation = 2.40984
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(-151, -120)
+rotation = -0.593412
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(-209, -42)
+rotation = -1.48429
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(-196, 55)
+rotation = -2.17746
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="ShockAnimation"]
+position = Vector2(-117, 144)
+rotation = -2.4103
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_tqw2k")
+autoplay = "default"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -95)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_2njt2")

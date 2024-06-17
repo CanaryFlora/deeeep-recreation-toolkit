@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw7bycitorhdn"]
+
+[ext_resource type="Script" path="res://entities/animal.gd" id="1_vnjen"]
+[ext_resource type="Texture2D" uid="uid://3bdxmhr70yms" path="res://assets/animals/marlin.png" id="2_i2ri2"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="3_k1ck2"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="4_besy1"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="5_11ajt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h00jk"]
+size = Vector2(110, 211)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0o8f"]
+size = Vector2(110, 26)
+
+[node name="Marlin" type="RigidBody2D"]
+script = ExtResource("1_vnjen")
+animal_name = &"Marlin"
+base_movement_speed = 500.0
+boosts = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.72, 0.8)
+texture = ExtResource("2_i2ri2")
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("3_k1ck2")
+base_damage = 120.0
+face_shapes = [NodePath("../CollisionShape2D2")]
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("4_besy1")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_11ajt")
+max_health = 700.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.5)
+scale = Vector2(0.72, 0.8)
+shape = SubResource("RectangleShape2D_h00jk")
+debug_color = Color(0.710349, 0.46856, 0.359435, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -86)
+scale = Vector2(0.72, 0.8)
+shape = SubResource("RectangleShape2D_i0o8f")
+debug_color = Color(0.921677, 0.147941, 0.587228, 0.42)

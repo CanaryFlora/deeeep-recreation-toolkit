@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1kdaehjiwirs"]
+
+[ext_resource type="Script" path="res://entities/animals/whale/whale_suction.gd" id="1_2noqo"]
+[ext_resource type="Texture2D" uid="uid://b1eu7quyrv2k4" path="res://assets/animal_effects/whale_suctions/Whale_suck_1_1.png" id="2_y5mgx"]
+[ext_resource type="Texture2D" uid="uid://cf4o3m8i8eyu5" path="res://assets/animal_effects/whale_suctions/Whale_suck_2_1.png" id="3_hwrkf"]
+[ext_resource type="Texture2D" uid="uid://dqgb7ctqlt8iy" path="res://assets/animal_effects/whale_suctions/Whale_suck_3_1.png" id="4_f2b8w"]
+[ext_resource type="Texture2D" uid="uid://3877t51rups0" path="res://assets/animal_effects/whale_suctions/Whale_suck_4_1.png" id="5_5ma8g"]
+[ext_resource type="Texture2D" uid="uid://bulwxskatv0u5" path="res://assets/animal_effects/whale_suctions/Whale_suck_5.png" id="6_8tj0v"]
+[ext_resource type="Texture2D" uid="uid://dseh3h0aunsmk" path="res://assets/animal_effects/whale_suctions/Whale_suck_6.png" id="7_ulcph"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0eswm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y5mgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hwrkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f2b8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5ma8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8tj0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ulcph")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="WhaleSuction" type="Node2D"]
+position = Vector2(-5, 0)
+script = ExtResource("1_2noqo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(1.5, 2.2)
+sprite_frames = SubResource("SpriteFrames_0eswm")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 25
+gravity_point = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(1.6, 1.15)
+polygon = PackedVector2Array(42, 350, -45, 350, -240, -410, 240, -410)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 340)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

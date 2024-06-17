@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7xwyyh4fv3yb"]
+
+[ext_resource type="Script" path="res://entities/animals/goblin/goblin_dash_jaw.gd" id="1_81jsl"]
+[ext_resource type="Texture2D" uid="uid://p74yc2wxwpxv" path="res://assets/projectiles/gob_jaw.png" id="1_467g1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf0bc"]
+size = Vector2(80, 80)
+
+[node name="GoblinDashJaw" type="Node2D"]
+script = ExtResource("1_81jsl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.8)
+texture = ExtResource("1_467g1")
+region_enabled = true
+region_rect = Rect2(0, 0, 93.6128, 100)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.9, 0.8)
+shape = SubResource("RectangleShape2D_uf0bc")

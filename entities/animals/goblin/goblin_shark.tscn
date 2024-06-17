@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw84jda10ttms"]
+
+[ext_resource type="Script" path="res://entities/animals/goblin/goblin_shark.gd" id="1_buxpe"]
+[ext_resource type="Texture2D" uid="uid://bivc1lko2bsr4" path="res://assets/animals/goblinshark.png" id="2_qqdwa"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="3_f5mjc"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="4_dgo21"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="5_mar28"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkxgh"]
+size = Vector2(150, 195.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rdy2"]
+size = Vector2(151, 13)
+
+[node name="GoblinShark" type="RigidBody2D"]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_buxpe")
+animal_name = &"Goblin Shark"
+base_movement_speed = 100.0
+boosts = 3
+charge_max_seconds = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_qqdwa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16.75)
+shape = SubResource("RectangleShape2D_bkxgh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -87.5)
+shape = SubResource("RectangleShape2D_3rdy2")
+debug_color = Color(0.9743, 0, 0.42778, 0.42)
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("3_f5mjc")
+base_damage = 150.0
+face_shapes = [NodePath("../CollisionShape2D2")]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_dgo21")
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("5_mar28")
+
+[node name="ShootMarker" type="Marker2D" parent="."]
+position = Vector2(0, -180)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv51df8o243ir"]
+
+[ext_resource type="Script" path="res://entities/animals/whale/whale.gd" id="1_8fyua"]
+[ext_resource type="Texture2D" uid="uid://cocekj5h4k2r7" path="res://assets/animals/whale.png" id="2_iddvf"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="3_wp6aj"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="4_gd0dn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_motud"]
+size = Vector2(150, 210)
+
+[node name="Whale" type="RigidBody2D"]
+lock_rotation = true
+continuous_cd = 1
+max_contacts_reported = 100
+contact_monitor = true
+angular_damp = 10.0
+script = ExtResource("1_8fyua")
+base_movement_speed = 100.0
+animal_name = &"Whale"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_iddvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_motud")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_wp6aj")
+max_health = 99999.0
+healthbar_extra_y = -20.0
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("4_gd0dn")

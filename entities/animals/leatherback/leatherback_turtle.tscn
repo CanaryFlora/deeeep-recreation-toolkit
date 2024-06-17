@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://7j6vi8pfa6k5"]
+
+[ext_resource type="Script" path="res://entities/animals/leatherback/leatherback_turtle.gd" id="1_0e501"]
+[ext_resource type="Texture2D" uid="uid://ga52d78siy6h" path="res://assets/animals/leatherbackturtle.png" id="2_ejvtb"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="3_7ox0y"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="4_62q6p"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="5_pnndb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsdas"]
+size = Vector2(160, 214)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlfw6"]
+size = Vector2(160, 24)
+
+[node name="LeatherbackTurtle" type="RigidBody2D"]
+script = ExtResource("1_0e501")
+animal_name = &"Leatherback Turtle"
+base_movement_speed = 95.0
+boosts = 3
+charge_max_seconds = 0.75
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ejvtb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_qsdas")
+
+[node name="FaceArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, -110)
+shape = SubResource("RectangleShape2D_nlfw6")
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("3_7ox0y")
+base_damage = 130.0
+face_shapes = [NodePath("../FaceArea")]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_62q6p")
+max_health = 850.0
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("5_pnndb")

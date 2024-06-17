@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl4b7mre7w0uw"]
+
+[ext_resource type="Theme" uid="uid://cp8mmglstiuhh" path="res://components/health_component/health_bar_theme.tres" id="1_tu6r5"]
+
+[node name="ProgressBar" type="ProgressBar"]
+offset_left = -90.0
+offset_top = -180.0
+offset_right = 90.0
+offset_bottom = -160.0
+theme = ExtResource("1_tu6r5")
+show_percentage = false

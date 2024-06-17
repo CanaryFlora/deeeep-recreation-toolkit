@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3omr0qa2ysay"]
+
+[ext_resource type="Theme" uid="uid://82b0tj17te6s" path="res://components/health_component/heal_text_theme.tres" id="1_mw6qp"]
+
+[node name="HealText" type="Label"]
+offset_top = -150.0
+offset_right = 1.0
+offset_bottom = -130.0
+theme = ExtResource("1_mw6qp")
+horizontal_alignment = 1
+vertical_alignment = 1

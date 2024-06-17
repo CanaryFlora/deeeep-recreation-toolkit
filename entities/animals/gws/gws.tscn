@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://cl6c1f6tiu600"]
+
+[ext_resource type="Script" path="res://entities/animal.gd" id="1_n62nc"]
+[ext_resource type="Texture2D" uid="uid://dh3xgvy8fwybg" path="res://assets/animals/shark.png" id="3_soo7s"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="4_53750"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="4_ckeu8"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="5_7tyt8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuy07"]
+size = Vector2(152, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptki2"]
+size = Vector2(152, 17)
+
+[node name="Animal" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 100
+linear_damp = 10.0
+angular_damp = 10.0
+script = ExtResource("1_n62nc")
+animal_name = &"Great White Shark"
+base_movement_speed = 100.0
+boosts = 3
+charge_max_seconds = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_soo7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_cuy07")
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("4_ckeu8")
+base_damage = 180.0
+face_shapes = [NodePath("../CollisionShape2D2")]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_53750")
+max_health = 1e+06
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -115.5)
+shape = SubResource("RectangleShape2D_ptki2")
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("5_7tyt8")

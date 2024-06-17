@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://dxh73x8ik6hoc"]
+
+[ext_resource type="Script" path="res://components/effect_component/effect.gd" id="1_dxcp7"]
+
+[resource]
+script = ExtResource("1_dxcp7")
+name = &"ElectrifiedSpread"
+stacking_mode = "Override"
+overflow_mode = "Discard"

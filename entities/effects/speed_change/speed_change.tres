@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://ctw82tpjbey6e"]
+
+[ext_resource type="Script" path="res://components/effect_component/effect.gd" id="1_y5xnn"]
+
+[resource]
+script = ExtResource("1_y5xnn")
+name = &"Speed Change"
+stacking_mode = "Stack"
+overflow_mode = "Discard"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://7wrfw6r4xwpy"]
+
+[ext_resource type="Script" path="res://entities/animals/leatherback/leatherback_shield.gd" id="1_wmg16"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="2_bwpae"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="3_enq53"]
+[ext_resource type="Texture2D" uid="uid://uby81wgwe2fc" path="res://assets/animal_effects/leatherback_shield.png" id="4_bx0vf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nh8ag"]
+radius = 225.056
+
+[node name="LeatherbackShield" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_wmg16")
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("2_bwpae")
+base_damage = 160.0
+knockback_strength = 0.0
+face_shapes = [NodePath("../CollisionShape2D")]
+damage_cooldown = 0.3
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_enq53")
+max_health = 200.0
+regeneration_percentage = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nh8ag")
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("4_bx0vf")

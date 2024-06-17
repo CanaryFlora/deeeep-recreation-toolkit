@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://crtj2mh122g3d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1chws"]
+radius = 222.0
+
+[node name="LeatherbackShieldEnterPrevention" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1chws")

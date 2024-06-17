@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbov321j5pd5q"]
+
+[ext_resource type="Script" path="res://entities/animals/whale/whale.gd" id="1_8fyua"]
+[ext_resource type="Texture2D" uid="uid://cocekj5h4k2r7" path="res://assets/animals/whale.png" id="2_iddvf"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="3_wp6aj"]
+[ext_resource type="Script" path="res://components/effect_component/effect_component.gd" id="4_gd0dn"]
+[ext_resource type="Script" path="res://components/face_damage_component.gd" id="5_cj0dt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_motud"]
+size = Vector2(150, 205.833)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e83ad"]
+size = Vector2(180, 22)
+
+[node name="Whale" type="RigidBody2D"]
+lock_rotation = true
+freeze_mode = 1
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 100
+angular_damp = 10.0
+script = ExtResource("1_8fyua")
+animal_name = &"Fin Whale"
+base_movement_speed = 105.0
+boosts = 3
+charge_max_seconds = 0.5
+charge_boost_bar_offset = Vector2(50, 0)
+
+[node name="SuctionMarker" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_iddvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_motud")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_wp6aj")
+max_health = 1500.0
+healthbar_extra_y = -20.0
+
+[node name="EffectComponent" type="Node" parent="."]
+script = ExtResource("4_gd0dn")
+
+[node name="FaceDamageComponent" type="Node" parent="." node_paths=PackedStringArray("face_shapes")]
+script = ExtResource("5_cj0dt")
+base_damage = 120.0
+face_shapes = [NodePath("../CollisionShape2D2")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -135)
+shape = SubResource("RectangleShape2D_e83ad")

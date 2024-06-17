@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://1gr3swf0w2wx"]
+
+[ext_resource type="Texture2D" uid="uid://d20pfo2e2spv6" path="res://assets/animal_effects/torpedo_zap.png" id="1_w1dkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37h0d"]
+atlas = ExtResource("1_w1dkg")
+region = Rect2(0, 0, 16, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inaoi"]
+atlas = ExtResource("1_w1dkg")
+region = Rect2(16, 0, 16, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqqs1"]
+atlas = ExtResource("1_w1dkg")
+region = Rect2(32, 0, 16, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h44jk"]
+atlas = ExtResource("1_w1dkg")
+region = Rect2(48, 0, 16, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7amj"]
+atlas = ExtResource("1_w1dkg")
+region = Rect2(64, 0, 16, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0co0v"]
+atlas = ExtResource("1_w1dkg")
+region = Rect2(80, 0, 16, 100)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37h0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inaoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqqs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h44jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7amj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0co0v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
